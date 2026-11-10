@@ -8,13 +8,9 @@ Gerar certificado → Selecionar PDF → Assinar digitalmente → Validar assina
 
 ## Integrantes do grupo
 
-| Nome | Matrícula |
-|------|-----------|
-| _Integrante 1_ | _000000_ |
-| _Integrante 2_ | _000000_ |
-| _Integrante 3_ | _000000_ |
-
-> ✏️ Preencha a tabela acima com os nomes do grupo.
+- Ezequiel Pereira
+- Paulo Vitor Martins
+- Matheus Lucas Paes
 
 ## Tecnologias
 
