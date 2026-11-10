@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Assinar PDF{% endblock %}
+{% block conteudo %}
+<h1>2. Assinar documento PDF</h1>
+<p class="intro">Selecione o PDF e o arquivo .pfx gerado no passo 1. A senha libera o acesso à chave privada.</p>
+<form method="post" enctype="multipart/form-data" class="cartao formulario">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <label>Documento PDF *<input type="file" name="pdf" accept="application/pdf,.pdf" required></label>
+  <label>Certificado com chave privada (.pfx / .p12) *<input type="file" name="pfx" accept=".pfx,.p12" required></label>
+  <label>Senha do .pfx *<input type="password" name="senha" required autocomplete="off"></label>
+  <div class="grade2">
+    <label>Motivo<input name="motivo" maxlength="120" value="Aprovação do documento"></label>
+    <label>Local<input name="local" maxlength="120" placeholder="Ex.: Rio Verde - GO"></label>
+  </div>
+  <label class="checkbox"><input type="checkbox" name="visivel" checked> Mostrar carimbo visual na página 1</label>
+  <p class="discreto">O carimbo é só a aparência. A assinatura de verdade é a estrutura criptográfica gravada no PDF.</p>
+  <button type="submit">Assinar digitalmente</button>
+</form>
+{% endblock %}

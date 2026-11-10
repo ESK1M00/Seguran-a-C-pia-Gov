@@ -1,0 +1,8 @@
+# Dependências da aplicação (instale com: pip install -r requirements.txt)
+Flask==3.1.3                 # servidor web / interface
+cryptography==50.0.2         # chaves RSA, certificados X.509, PKCS#12
+pyHanko==0.38.1              # assinatura e validação de PDF (PAdES)
+pyhanko-certvalidator==0.33.0  # validação de cadeia de certificados
+asn1crypto==1.5.1            # estruturas ASN.1 (CMS / X.509)
+reportlab==5.1.0             # apenas para gerar o PDF de exemplo
+pytest==8.4.2                # testes automatizados

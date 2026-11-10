@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Teste de integridade{% endblock %}
+{% block conteudo %}
+<h1>4. Teste de integridade</h1>
+<p class="intro">Envie um PDF já assinado. A aplicação modifica o documento de propósito e valida o original e o modificado lado a lado.</p>
+<form method="post" enctype="multipart/form-data" class="cartao formulario">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <label>PDF assinado *<input type="file" name="pdf" accept="application/pdf,.pdf" required></label>
+
+  <fieldset>
+    <legend>Tipo de alteração</legend>
+    <label class="checkbox"><input type="radio" name="modo" value="bytes" checked>
+      <span><strong>Adulterar bytes</strong>: troca um texto dentro da área assinada (ex.: o valor do contrato).</span></label>
+    <div class="grade2 recuo">
+      <label>Texto original<input name="original" value="R$ 1.000,00"></label>
+      <label>Texto novo (mesmo tamanho)<input name="novo" value="R$ 9.000,00"></label>
+    </div>
+    <p class="discreto recuo">Se o texto não for encontrado (PDF comprimido), 1 byte da área assinada é alterado.</p>
+
+    <label class="checkbox"><input type="radio" name="modo" value="incremental">
+      <span><strong>Alteração incremental</strong>: acrescenta uma nova revisão que escreve sobre a página 1, como um editor de PDF faria.</span></label>
+    <label class="recuo">Texto inserido<input name="texto" maxlength="60" value="DOCUMENTO ALTERADO APOS A ASSINATURA"></label>
+  </fieldset>
+  <button type="submit">Modificar e validar</button>
+</form>
+{% endblock %}

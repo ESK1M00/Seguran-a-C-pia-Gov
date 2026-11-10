@@ -1,0 +1,75 @@
+{# Macros reutilizadas para exibir o certificado e o relatório de cada assinatura #}
+
+{% macro tabela_certificado(c) %}
+<table class="dados">
+  <tr><th>Titular (Subject)</th><td>{{ c.titular }}</td></tr>
+  <tr><th>Emissor (Issuer)</th><td>{{ c.emissor }}</td></tr>
+  <tr><th>Número de série</th><td class="mono">{{ c.numero_serie }}</td></tr>
+  <tr><th>Válido de</th><td>{{ c.valido_de }}</td></tr>
+  <tr><th>Válido até</th><td>{{ c.valido_ate }}</td></tr>
+  <tr><th>Chave pública</th><td>{{ c.algoritmo_chave }}</td></tr>
+  <tr><th>Algoritmo de assinatura</th><td>{{ c.algoritmo_assinatura }}</td></tr>
+  <tr><th>Versão</th><td>X.509 {{ c.versao }}</td></tr>
+  <tr><th>Impressão digital SHA-256</th><td class="mono quebra">{{ c.impressao_sha256 }}</td></tr>
+  <tr><th>Autoassinado?</th><td>{{ 'Sim' if c.autoassinado else 'Não' }}</td></tr>
+</table>
+{% endmacro %}
+
+{% macro selo(ok, sim, nao, alerta=false) %}
+<span class="selo-status {{ 'ok' if ok else ('alerta' if alerta else 'erro') }}">{{ sim if ok else nao }}</span>
+{% endmacro %}
+
+{% macro relatorio_assinatura(a) %}
+<article class="cartao assinatura nivel-{{ a.nivel }}">
+  <header>
+    <h3>Campo: {{ a.campo }}</h3>
+    <p class="veredito">{{ a.veredito }}</p>
+  </header>
+
+  <div class="grade3">
+    <div class="verificacao">
+      <h4>A) Integridade (hash)</h4>
+      {{ selo(a.integro, 'ÍNTEGRO', 'ADULTERADO') }}
+      <p>O hash {{ a.algoritmo_hash }} dos bytes assinados foi recalculado e comparado com o que está dentro da assinatura.</p>
+    </div>
+    <div class="verificacao">
+      <h4>B) Assinatura criptográfica</h4>
+      {{ selo(a.assinatura_valida, 'VÁLIDA', 'INVÁLIDA') }}
+      <p>Verificação RSA com a <strong>chave pública</strong> do certificado {{ '(confere)' if a.criptograficamente_valida else '(não confere)' }}.</p>
+    </div>
+    <div class="verificacao">
+      <h4>C) Confiança no certificado</h4>
+      {{ selo(a.confiavel, 'CONFIÁVEL', a.confianca, alerta=true) }}
+      <p>{{ a.confianca_detalhe }}</p>
+    </div>
+  </div>
+
+  <h4>Alterações após a assinatura</h4>
+  <p>{{ selo(not a.alterado_apos_assinatura, 'NENHUMA', 'DETECTADAS') }} {{ a.alteracoes_detalhe }}</p>
+  <p class="discreto">{{ a.cobertura }} Revisão assinada: {{ (a.revisao_assinada + 1) if a.revisao_assinada is not none else '?' }} de {{ a.total_revisoes }}.</p>
+
+  <table class="dados">
+    <tr><th>Hash gravado na assinatura</th><td class="mono quebra">{{ a.hash_assinado or '—' }}</td></tr>
+    <tr><th>Hash recalculado agora</th><td class="mono quebra {{ 'difere' if a.hash_assinado != a.hash_calculado }}">{{ a.hash_calculado or '—' }}</td></tr>
+    <tr><th>Data informada</th><td>{{ a.data_assinatura or '—' }}</td></tr>
+    <tr><th>Motivo / Local</th><td>{{ a.motivo or '—' }} / {{ a.local or '—' }}</td></tr>
+  </table>
+
+  {% if a.certificado %}
+  <details>
+    <summary>Dados do certificado do assinante</summary>
+    {{ tabela_certificado(a.certificado) }}
+  </details>
+  {% endif %}
+  {% for e in a.erros %}<p class="aviso aviso-erro">{{ e }}</p>{% endfor %}
+</article>
+{% endmacro %}
+
+{% macro relatorio_completo(r) %}
+  {% if not r.possui_assinaturas %}
+    <div class="aviso aviso-erro">Nenhuma assinatura digital foi encontrada neste documento.</div>
+  {% else %}
+    <p>Assinaturas encontradas: <strong>{{ r.quantidade }}</strong> · Revisões do arquivo: <strong>{{ r.total_revisoes }}</strong></p>
+    {% for a in r.assinaturas %}{{ relatorio_assinatura(a) }}{% endfor %}
+  {% endif %}
+{% endmacro %}

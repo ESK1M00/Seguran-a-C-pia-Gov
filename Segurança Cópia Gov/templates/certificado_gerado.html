@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_macros.html" import tabela_certificado %}
+{% block titulo %}Certificado gerado{% endblock %}
+{% block conteudo %}
+<h1>Certificado gerado</h1>
+<div class="aviso aviso-ok">Par de chaves e certificado X.509 criados com sucesso.</div>
+
+<section class="cartao">
+  <h2>Exportar</h2>
+  <div class="grade2">
+    <div>
+      <a class="botao" href="{{ url_for('baixar', token=token, ident='crt') }}">Baixar certificado público (.crt)</a>
+      <p class="discreto">Contém só a chave pública. Pode ser compartilhado e publicado no repositório.</p>
+    </div>
+    <div>
+      <a class="botao secundario" href="{{ url_for('baixar', token=token, ident='pfx') }}">Baixar certificado + chave privada (.pfx)</a>
+      <p class="discreto">Protegido pela sua senha. Download disponível uma única vez. <strong>Nunca publique este arquivo.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="cartao">
+  <h2>Dados do certificado</h2>
+  {{ tabela_certificado(info) }}
+  <details><summary>Certificado em formato PEM</summary><pre>{{ pem }}</pre></details>
+</section>
+<p><a class="botao" href="{{ url_for('assinar') }}">Próximo passo: assinar um PDF →</a></p>
+{% endblock %}

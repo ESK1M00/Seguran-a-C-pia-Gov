@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "_macros.html" import relatorio_completo %}
+{% block titulo %}Documento assinado{% endblock %}
+{% block conteudo %}
+<h1>Documento assinado</h1>
+<div class="aviso aviso-ok">O PDF foi assinado no campo <strong>{{ resultado.nome_campo }}</strong> por {{ resultado.titular.titular }}.</div>
+<p><a class="botao" href="{{ url_for('baixar', token=token, ident='pdf') }}">Baixar {{ nome }}</a></p>
+<p class="discreto">Abra o arquivo no Adobe Acrobat Reader e veja o painel <em>Assinaturas</em>. Ele vai avisar que a identidade é desconhecida, porque o certificado é autoassinado.</p>
+<h2>Verificação imediata</h2>
+{{ relatorio_completo(relatorio) }}
+{% endblock %}

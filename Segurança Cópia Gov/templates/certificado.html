@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block titulo %}Gerar certificado{% endblock %}
+{% block conteudo %}
+<h1>1. Gerar certificado digital</h1>
+<p class="intro">Gera um par de chaves RSA e um certificado X.509 autoassinado com os dados do titular.</p>
+{% set form = form or {} %}
+<form method="post" class="cartao formulario">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <fieldset>
+    <legend>Dados do titular</legend>
+    <label>Nome completo (CN) *<input name="cn" required maxlength="64" value="{{ form.get('cn', '') }}"></label>
+    <div class="grade2">
+      <label>Organização (O)<input name="o" maxlength="64" value="{{ form.get('o', '') }}"></label>
+      <label>Unidade (OU)<input name="ou" maxlength="64" value="{{ form.get('ou', '') }}"></label>
+      <label>Cidade (L)<input name="l" maxlength="64" value="{{ form.get('l', '') }}"></label>
+      <label>Estado (ST)<input name="st" maxlength="64" value="{{ form.get('st', '') }}"></label>
+      <label>País (C)<input name="c" maxlength="2" value="{{ form.get('c', 'BR') }}"></label>
+      <label>E-mail<input name="email" type="email" maxlength="128" value="{{ form.get('email', '') }}"></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Chave e validade</legend>
+    <div class="grade2">
+      <label>Tamanho da chave RSA
+        <select name="bits">{% for t in tamanhos %}<option value="{{ t }}">{{ t }} bits</option>{% endfor %}</select>
+      </label>
+      <label>Validade (dias)<input name="dias" type="number" min="1" max="3650" value="{{ form.get('dias', 365) }}"></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Proteção da chave privada</legend>
+    <p class="discreto">A senha cifra a chave privada dentro do arquivo .pfx. Ela não é armazenada pela aplicação.</p>
+    <div class="grade2">
+      <label>Senha do .pfx (mín. 6)<input name="senha" type="password" minlength="6" required autocomplete="new-password"></label>
+      <label>Confirmar senha<input name="senha2" type="password" minlength="6" required autocomplete="new-password"></label>
+    </div>
+  </fieldset>
+  <button type="submit">Gerar certificado</button>
+</form>
+{% endblock %}

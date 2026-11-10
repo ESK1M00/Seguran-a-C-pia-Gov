@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% from "_macros.html" import relatorio_completo %}
+{% block titulo %}Relatório de validação{% endblock %}
+{% block conteudo %}
+<h1>Relatório de validação</h1>
+<p class="intro">Arquivo: <strong>{{ arquivo }}</strong></p>
+{{ relatorio_completo(relatorio) }}
+<p><a class="botao secundario" href="{{ url_for('validar') }}">Validar outro documento</a></p>
+{% endblock %}

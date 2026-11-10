@@ -1,0 +1,90 @@
+%PDF-1.3
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/Contents 8 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 7 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+5 0 obj
+<<
+/PageMode /UseNone /Pages 7 0 R /Type /Catalog
+>>
+endobj
+6 0 obj
+<<
+/Author (anonymous) /CreationDate (D:20000101000000+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (unspecified) /Title (Contrato de Presta\347\343o de Servi\347os - Exemplo) /Trapped /False
+>>
+endobj
+7 0 obj
+<<
+/Count 1 /Kids [ 4 0 R ] /Type /Pages
+>>
+endobj
+8 0 obj
+<<
+/Length 1015
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F2 18 Tf 21.6 TL ET
+BT 1 0 0 1 60 751.8898 Tm (CONTRATO DE PRESTACAO DE SERVICOS) Tj T* ET
+BT /F1 12 Tf 14.4 TL ET
+BT 1 0 0 1 60 701.8898 Tm (Documento de exemplo para o trabalho de Seguranca de Software.) Tj T* ET
+BT 1 0 0 1 60 681.8898 Tm  T* ET
+BT 1 0 0 1 60 661.8898 Tm (CONTRATANTE: Prefeitura Municipal de Exemplo) Tj T* ET
+BT 1 0 0 1 60 641.8898 Tm (CONTRATADA: Empresa Ficticia de Tecnologia LTDA) Tj T* ET
+BT 1 0 0 1 60 621.8898 Tm  T* ET
+BT 1 0 0 1 60 601.8898 Tm (Clausula 1 - Objeto: desenvolvimento de sistema de assinatura digital.) Tj T* ET
+BT 1 0 0 1 60 581.8898 Tm (Clausula 2 - Valor total do contrato: R$ 1.000,00) Tj T* ET
+BT 1 0 0 1 60 561.8898 Tm (Clausula 3 - Prazo de execucao: 30 dias.) Tj T* ET
+BT 1 0 0 1 60 541.8898 Tm  T* ET
+BT 1 0 0 1 60 521.8898 Tm (Este documento sera assinado digitalmente \(PAdES / RSA / SHA-256\).) Tj T* ET
+BT 1 0 0 1 60 501.8898 Tm (Qualquer alteracao apos a assinatura deve ser detectada pela aplicacao.) Tj T* ET
+ 
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000061 00000 n 
+0000000102 00000 n 
+0000000209 00000 n 
+0000000321 00000 n 
+0000000524 00000 n 
+0000000592 00000 n 
+0000000897 00000 n 
+0000000956 00000 n 
+trailer
+<<
+/ID 
+[<242642c8faccd030597b93255c574755><242642c8faccd030597b93255c574755>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 6 0 R
+/Root 5 0 R
+/Size 9
+>>
+startxref
+2022
+%%EOF

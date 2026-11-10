@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block titulo %}Início{% endblock %}
+{% block conteudo %}
+<section class="destaque">
+  <h1>Assinatura e validação digital de documentos PDF</h1>
+  <p>Gere um certificado X.509, assine um PDF com sua chave privada e verifique se o documento continua íntegro.</p>
+</section>
+
+<ol class="fluxo">
+  <li><a href="{{ url_for('certificado') }}"><span>1</span><strong>Gerar certificado</strong><small>Par de chaves RSA ≥ 2048 bits e certificado X.509 autoassinado.</small></a></li>
+  <li><a href="{{ url_for('assinar') }}"><span>2</span><strong>Assinar PDF</strong><small>Assinatura PAdES incorporada, verificável no Adobe Reader.</small></a></li>
+  <li><a href="{{ url_for('validar') }}"><span>3</span><strong>Validar assinatura</strong><small>Integridade, validade criptográfica e confiança, separadamente.</small></a></li>
+  <li><a href="{{ url_for('integridade') }}"><span>4</span><strong>Testar integridade</strong><small>Altere o PDF assinado e veja a alteração ser detectada.</small></a></li>
+</ol>
+
+<section class="cartao">
+  <h2>Como as peças se encaixam</h2>
+  <div class="grade2">
+    <div>
+      <h3>Ao assinar</h3>
+      <ol>
+        <li>A aplicação calcula o <strong>hash SHA-256</strong> dos bytes do PDF (exceto o espaço reservado à assinatura).</li>
+        <li>O hash é assinado com a <strong>chave privada</strong> RSA do titular. Só quem tem o .pfx e a senha consegue fazer isso.</li>
+        <li>A assinatura e o <strong>certificado</strong> (com a chave pública) são gravados dentro do PDF, em uma atualização incremental.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Ao validar</h3>
+      <ol>
+        <li>O hash dos mesmos bytes é <strong>recalculado</strong>. Se um único byte mudou, o hash fica completamente diferente.</li>
+        <li>A assinatura é verificada com a <strong>chave pública</strong> do certificado embutido.</li>
+        <li>O certificado é conferido: tem uma <strong>cadeia de confiança</strong> ou é autoassinado?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+{% endblock %}
