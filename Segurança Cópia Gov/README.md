@@ -12,6 +12,8 @@ Gerar certificado → Selecionar PDF → Assinar digitalmente → Validar assina
 - Paulo Vitor Martins
 - Matheus Lucas Paes
 
+**Curso:** Engenharia de Software · **Disciplina:** Segurança de Software · **Professor:** Vinicius Martinez de Oliveira
+
 ## Tecnologias
 
 | Item | Escolha |
