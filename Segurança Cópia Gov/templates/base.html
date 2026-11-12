@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block titulo %}Segurança Cópia Gov{% endblock %} · Assinatura Digital de PDF</title>
+  <title>{% block titulo %}Início{% endblock %} · Segurança Assinatura Digital</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
 </head>
 <body>
 <header class="topo">
   <div class="faixa">
     <a class="marca" href="{{ url_for('inicio') }}">
-      <span class="selo">SC</span>
-      <span><strong>Segurança Cópia Gov</strong><small>Assinatura e validação digital de PDF</small></span>
+      <span class="selo">SA</span>
+      <span><strong>Segurança Assinatura Digital</strong><small>Assinatura e validação digital de PDF</small></span>
     </a>
     <nav>
       <a href="{{ url_for('certificado') }}" class="{{ 'ativo' if request.endpoint == 'certificado' }}">1. Certificado</a>

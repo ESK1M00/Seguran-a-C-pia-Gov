@@ -1,5 +1,5 @@
 """
-Segurança Cópia Gov — aplicação web (Flask)
+Segurança Assinatura Digital — aplicação web (Flask)
 ============================================
 
 Este arquivo contém apenas a CAMADA WEB: recebe os formulários, chama as

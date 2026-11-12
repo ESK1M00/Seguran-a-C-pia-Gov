@@ -1,5 +1,5 @@
 """
-Pacote com a lógica de segurança da aplicação "Segurança Cópia Gov".
+Pacote com a lógica de segurança da aplicação "Segurança Assinatura Digital".
 
 Módulos:
   certificados.py -> Funcionalidade 1: chaves RSA e certificados X.509

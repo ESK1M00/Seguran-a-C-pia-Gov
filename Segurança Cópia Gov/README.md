@@ -1,4 +1,4 @@
-# Segurança Cópia Gov — Assinatura e Validação Digital de PDF
+# Segurança Assinatura Digital — Assinatura e Validação Digital de PDF
 
 Trabalho Prático de **Segurança de Software**: uma aplicação web que **gera certificados digitais X.509**, **assina documentos PDF** (padrão PAdES, verificável no Adobe Acrobat Reader) e **valida assinaturas**, detectando qualquer alteração feita depois da assinatura.
 
